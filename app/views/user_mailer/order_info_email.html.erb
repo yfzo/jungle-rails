@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hello,</h1>
+    <p>
+      Thank you for shopping with us. We will send a confirmation once your items have shipped. Your order details are indicated below.
+    </p>
+    <h1>Order Details</h1>
+    <p>
+      <% @order.line_items.each do |item| %>
+        <%= item.product.name %> - <%= item.product.price * item.quantity %> (<%= item.quantity %>)<br>
+      <% end %>
+      <hr>
+      Total: <%= @order.total_cents / 100.0 %>
+    </p>
+    <p>We hope to see you again soon!</p>
+  </body>
+</html>

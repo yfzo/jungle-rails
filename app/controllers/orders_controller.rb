@@ -10,7 +10,12 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
-      # flash[:success] = "Welcome to Jungle!"
+
+      # Confirmation email after order
+      @order = Order.last
+      UserMailer.order_info_email(@order).deliver_later
+
+      # flash[:success] = "Your Order has been placed."
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
