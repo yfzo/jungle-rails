@@ -1,0 +1,35 @@
+<section class="users-new">
+
+  <% provide(:title, 'Sign Up') %>
+  <header class="page-header">
+    <h1>Sign Up</h1>
+  </header>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@user, url: signup_path) do |form| %>
+        <div class="form-group">
+          <%= render 'layouts/error_messages' %>
+
+          <%= form.label :first_name %>
+          <%= form.text_field :first_name, class: 'form-control' %>
+
+          <%= form.label :last_name %>
+          <%= form.text_field :last_name, class: 'form-control' %>
+
+          <%= form.label :email %>
+          <%= form.email_field :email, class: 'form-control' %>
+
+          <%= form.label :password %>
+          <%= form.password_field :password, class: 'form-control' %>
+
+          <%= form.label :password_confirmation, "Confirmation" %>
+          <%= form.password_field :password_confirmation, class: 'form-control' %>
+          </div>
+
+          <%= form.submit "Create my account", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+</section>
