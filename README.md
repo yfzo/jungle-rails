@@ -26,3 +26,9 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 * Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
 * PostgreSQL 9.x
 * Stripe
+
+## Screenshots
+
+!["All products index page"](https://github.com/yfzo/jungle-rails/blob/master/docs/product_index.png?raw=true)
+!["Product details with reviews"](https://github.com/yfzo/jungle-rails/blob/master/docs/product_with_reviews.png?raw=true)
+!["Order details page after payment"](https://github.com/yfzo/jungle-rails/blob/master/docs/order_details.png?raw=true)
