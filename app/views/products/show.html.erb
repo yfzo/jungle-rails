@@ -22,6 +22,29 @@
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
           <dd><%= @product.price %></dd>
+          <dt>Reviews</dt>
+          <dd>
+            <% @product.reviews.each do |review| %>
+              <div class="review well">
+                <div class="review-heading">
+                  <div class="reviewer">
+                    <%= review.user.first_name %> <%= review.user.last_name %>
+                  </div>
+                  <div class="rating">
+                    <% (1..review.rating).each do |i| %>
+                      <span class="fa fa-star checked"></span>
+                    <% end %>
+                    <% (1..(5 - review.rating)).each do |i| %>
+                      <span class="fa fa-star"></span>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="review-content">
+                  <%= review.description %>
+                </div>
+              </div>
+            <% end %>
+          </dd>
         </dl>
       </div>
     </div>
