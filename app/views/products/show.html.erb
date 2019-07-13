@@ -24,17 +24,18 @@
           <dd><%= @product.price %></dd>
           <dt>Reviews</dt>
           <dd>
-            <%= form_for [@product, @review] do |form| %>
-              <div class="form-group">
-                <%= form.label :description %> |
-                <%= form.label :rating %>
-                <%= form.select :rating, options_for_select([1, 2, 3, 4, 5]) %>
-                <%= form.text_area :description, class: 'form-control' %>
-                <%= form.submit "Submit review", class: "btn btn-primary" %>
-              </div>
-
+            <% if logged_in? %>
+              <%= form_for [@product, @review] do |form| %>
+                <div class="form-group">
+                  <%= form.label :description %> |
+                  <%= form.label :rating %>
+                  <%= form.select :rating, options_for_select([1, 2, 3, 4, 5]) %>
+                  <%= form.text_area :description, class: 'form-control' %>
+                  <%= form.submit "Submit review", class: "btn btn-primary" %>
+                </div>
+              <% end %>
             <% end %>
-            <% @product.reviews.each do |review| %>
+            <% @product.reviews.reverse.each do |review| %>
               <div class="review well">
                 <div class="review-heading">
                   <div class="reviewer">

@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+    before_action :require_login
 
     def create
         @product = Product.find_by(id: params[:product_id])
@@ -17,5 +18,12 @@ class ReviewsController < ApplicationController
 
     def review_params
         params.require(:review).permit(:rating, :description, :user_id, :product_id)
+    end
+    
+    def require_login
+        unless logged_in?
+        flash[:error] = "You must be logged in to access this section"
+        redirect_to new_login_url # halts request cycle
+        end
     end
 end
