@@ -8,6 +8,21 @@
   <p class="description">
     <%= product.description %>
   </p>
+  <div class="product-rating">
+    <div class="rating">
+      <% ratings_sum = 0 %>
+      <% product.reviews.each do |review| %>
+        <% ratings_sum += review.rating %>
+      <% end %>
+      <% avg_rating = product.reviews.count != 0 ? (ratings_sum / product.reviews.count).round : 0 %>
+      <% (1..avg_rating).each do |i| %>
+        <span class="fa fa-star checked"></span>
+      <% end %>
+      <% (1..(5 - avg_rating)).each do |i| %>
+        <span class="fa fa-star"></span>
+      <% end %>
+    </div>
+  </div>
   <footer class="actions">
     <%= button_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary' , method: :post do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>

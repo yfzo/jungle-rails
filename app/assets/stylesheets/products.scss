@@ -27,6 +27,13 @@ main section.categories-show {
         display: block;
       }
 
+      .product-rating {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end
+      }
+
       footer {
         position: absolute;
         bottom: 0;
