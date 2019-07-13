@@ -11,3 +11,20 @@
 .reviewer {
 	font-weight: bold;
 }
+
+.delete-btn {
+	display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.review-body {
+	padding-top: 1em;
+}
+
+.review-submit-btn {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	margin-top: 1em;
+}

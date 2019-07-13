@@ -31,7 +31,9 @@
                   <%= form.label :rating %>
                   <%= form.select :rating, options_for_select([1, 2, 3, 4, 5]) %>
                   <%= form.text_area :description, class: 'form-control' %>
-                  <%= form.submit "Submit review", class: "btn btn-primary" %>
+                  <div class="review-submit-btn">
+                    <%= form.submit "Submit review", class: "btn btn-primary" %>
+                  </div>
                 </div>
               <% end %>
             <% end %>
@@ -50,14 +52,18 @@
                     <% end %>
                   </div>
                 </div>
-                <div class="review-content">
-                  <%= review.description %>
-                </div>
-                <% if current_user == review.user %>
-                  <%= link_to product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <button class="btn"><i class="fa fa-trash"></i></button>
+                <div class="review-body">
+                  <div class="review-content">
+                    <%= review.description %>
+                  </div>
+                  <% if current_user == review.user %>
+                    <div class="delete-btn">
+                      <%= link_to product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <button class="btn"><i class="fa fa-trash"></i></button>
+                      <% end %>
+                    </div>
                   <% end %>
-                <% end %>
+                </div>
               </div>
             <% end %>
           </dd>
