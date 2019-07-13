@@ -53,6 +53,11 @@
                 <div class="review-content">
                   <%= review.description %>
                 </div>
+                <% if current_user == review.user %>
+                  <%= link_to product_review_path(@product, review), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <button class="btn"><i class="fa fa-trash"></i></button>
+                  <% end %>
+                <% end %>
               </div>
             <% end %>
           </dd>
