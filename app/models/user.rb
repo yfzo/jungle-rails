@@ -9,5 +9,11 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
     has_secure_password
-    validates :password, presence:true, length: { minimum: 6 }
+    validates :password, presence: true, length: { minimum: 6 }
+    validates :password_confirmation, presence: true
+
+    def self.authenticate_with_credentials(email, password)
+        user = User.find_by(email: email.downcase)
+        user &&= (user.authenticate(password) ? user : nil)
+    end
 end
