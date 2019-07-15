@@ -79,6 +79,11 @@ RSpec.describe User, type: :model do
       @user = User.create({first_name: 'Jen', last_name: 'Smith', email: 'j@s.com', password: 'asdfgh', password_confirmation: 'asdfgh'})
       expect(User.authenticate_with_credentials('jen@smith.com', 'asdfgh')).to be_nil
     end
+
+    it 'should accept emails with leading and trailing whitespace' do
+      @user = User.create({first_name: 'Jen', last_name: 'Smith', email: 'j@s.com', password: 'asdfgh', password_confirmation: 'asdfgh'})
+      expect(User.authenticate_with_credentials('  j@s.com  ', 'asdfgh')).to eq(@user)
+    end
   end
 
 end
