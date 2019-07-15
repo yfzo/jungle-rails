@@ -10,11 +10,7 @@
   </p>
   <div class="product-rating">
     <div class="rating">
-      <% ratings_sum = 0 %>
-      <% product.reviews.each do |review| %>
-        <% ratings_sum += review.rating %>
-      <% end %>
-      <% avg_rating = product.reviews.count != 0 ? (ratings_sum / product.reviews.count).round : 0 %>
+      <% avg_rating = product.average_rating %>
       <% (1..avg_rating).each do |i| %>
         <span class="fa fa-star checked"></span>
       <% end %>

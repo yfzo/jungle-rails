@@ -11,4 +11,8 @@ class Product < ActiveRecord::Base
   validates :quantity, presence: true
   validates :category, presence: true
 
+  def average_rating
+    @reviews = Review.where(product_id: id)
+    @reviews.empty? ? 0 : @reviews.average(:rating).round.to_i
+  end
 end
