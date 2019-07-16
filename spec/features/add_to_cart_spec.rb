@@ -17,17 +17,16 @@ RSpec.feature "Visitor navigates to home page", type: :feature, js: true do
     end
   end
 
-  scenario "They see product details after clicking details on all products page" do
+  scenario "They see their cart number go up by one after clicking Add to Cart" do
     # ACT
     visit root_path
     product_el = page.find('article.product:first-child')
-    within(product_el) {click_on 'Details'}
+    within(product_el) {click_on 'Add'}
 
     # DEBUG
-    expect(page).to have_css('section.products-show')
     save_screenshot
 
     # VERIFY
-    expect(page).to have_css 'article.product-detail'
+    expect(page).to have_content 'My Cart (1)'
   end
 end
